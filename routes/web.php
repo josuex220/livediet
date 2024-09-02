@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DietController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -50,12 +51,27 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/mydiet', [DietController::class, 'index'])->name('diet.index');
     Route::get('/mydiet/list', [DietController::class, 'list'])->name('diet.list');
+    Route::get('/mydiet/list_pending', [DietController::class, 'listPending'])->name('diet.pendigList');
     Route::post('/diet/submit', [DietController::class,'store'])->name('diet.submit');
 
 
-    // Route::get('/generatePayment', [PaymentController::class,'store'])->name('payment.store');
+    Route::get('/generatePayment/{id}', [PaymentController::class,'createPayment'])->name('payment.process');
     Route::get('/mydiet/{id}', [DietController::class, 'view'])->name('diet.view');
     Route::get('/mydiet/{id}/details', [DietController::class, 'details'])->name('diet.detail');
+
+    Route::get('/pagamento/sucesso', function () {
+        return "Pagamento realizado com sucesso!";
+    });
+
+    Route::get('/pagamento/falha', function () {
+        return view('error', ['errorCode' => 'dae9996e-8c0e3bda-c3fcaf03-dbe6f8f9-456aad87']);
+
+    });
+
+    Route::get('/pagamento/pendente', function () {
+        return view('pending');
+    });
+
 });
 
 require __DIR__.'/auth.php';

@@ -1,4 +1,5 @@
 import PrimaryButton from '@/Components/PrimaryButton';
+import IMCComponent from '@/Components/IMCComponent';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, Link, usePage } from '@inertiajs/react';
 import axios from 'axios';
@@ -16,6 +17,7 @@ export default function List({ auth }) {
                     setPending(false);
                 });
                 setDiet(response.data);
+                console.log(response.data);
             } catch (error) {
                 console.error('Erro ao buscar dietas:', error);
             }
@@ -105,6 +107,9 @@ export default function List({ auth }) {
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+                    <IMCComponent sexo={diet.data.sexo} altura={diet.data.altura} peso={diet.data.peso} idade={diet.data.idade} />
+
                     <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900">
                         <h4 className="text-xl font-semibold mb-5" style={{

@@ -37,6 +37,10 @@ class DietController extends Controller
             'plano_alimentar' => json_decode($diet['plano_alimentar'], true),
             'pending'         => $diet['pending'],
             'paid'            => $diet['paid'],
+            'sexo'            => $diet['genero'] == 1 ? 'Masculino' : 'Feminino',
+            'altura'          => (float) $diet['altura'],
+            'peso'            => (float) $diet['peso'],
+            'idade'           => (int)  $diet['idade'],
             'user_id'         => $diet['user_id']
         ];
 
@@ -50,6 +54,21 @@ class DietController extends Controller
 
     public function list(){
         $diets = Diet::where('user_id', Auth::id())->get()
+            ->map(function ($item) {
+                return [
+                    'created_at' => $item['created_at'],
+                    'paid' => $item['paid'],
+                    'pending' => $item['pending'],
+                    'id' => $item['id'],
+                ];
+            });
+
+        return response()->json($diets);
+    }
+
+
+    public function listPending(){
+        $diets = Diet::where('user_id', Auth::id())->where('paid', 'PENDENTE')->get()
             ->map(function ($item) {
                 return [
                     'created_at' => $item['created_at'],

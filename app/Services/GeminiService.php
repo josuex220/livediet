@@ -78,6 +78,12 @@ class GeminiService
                 [
                     'role' => 'user',
                     'parts' => [
+                        ['text' => 'É Importante que a medida dos alimentos sejam dados em Gramas (g)'],
+                    ],
+                ],
+                [
+                    'role' => 'user',
+                    'parts' => [
                         ['text' => $userInput],
                     ],
                 ],
