@@ -100,7 +100,7 @@ export default function List({ auth }) {
                                             </td>
                                             <td className="px-6 py-4">
                                                 {item.paid=="PENDENTE" && (
-                                                    <Link className='inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150'>Pagar</Link>
+                                                    <a href={route('payment.process', {id : item.id})} target={'_BLANK'} className='inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150'>Pagar</a>
                                                 )}
                                                 {(item.paid=="PAGO" && item.pending=="GERADO") && (
                                                     <Link className='inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150' href={route('diet.view', {id:item.id})}>Acessar Minha Dieta</Link>

@@ -5,13 +5,14 @@ import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import { Head, Link, useForm } from '@inertiajs/react';
+import Checkbox from '@/Components/Checkbox';
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
         name: '',
         email: '',
         password: '',
-        password_confirmation: '',
+        password_confirmation: ''
     });
 
     useEffect(() => {
@@ -98,7 +99,19 @@ export default function Register() {
 
                     <InputError message={errors.password_confirmation} className="mt-2" />
                 </div>
-
+                <div className="block mt-4 flex justify-between">
+                    <label className="flex items-center">
+                        <Checkbox
+                            name="termos"
+                            checked={data.remember}
+                            required={true}
+                            onChange={(e) => setData('termos', e.target.checked)}
+                        />
+                        <span className="ms-2 text-sm text-gray-600">Li e Concordo com os
+                            <a href="/termos-e-condicoes" target='_BLANK' style={{textDecoration:'underline', color:'red', marginLeft:5}}>Termos e condições</a>
+                            </span>
+                    </label>
+                </div>
                 <div className="flex items-center justify-end mt-4">
                     <Link
                         href={route('login')}

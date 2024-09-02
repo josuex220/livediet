@@ -74,4 +74,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 });
 
+Route::get('/termos-e-condicoes', function () {
+    return Inertia::render('Termos');
+})->name('termos');
+
 require __DIR__.'/auth.php';

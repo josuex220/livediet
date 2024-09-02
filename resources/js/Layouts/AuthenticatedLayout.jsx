@@ -16,7 +16,7 @@ export default function Authenticated({ user, header, children }) {
                         <div className="flex">
                             <div className="shrink-0 flex items-center">
                                 <Link href="/">
-                                    <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
+                                    <ApplicationLogo className="block h-[76px] w-auto fill-current text-gray-800" />
                                 </Link>
                             </div>
 
@@ -26,6 +26,10 @@ export default function Authenticated({ user, header, children }) {
                                 </NavLink>
                                 <NavLink href={route('diet.index')} active={route().current('diet.index')}>
                                     Minhas Dietas
+                                </NavLink>
+                                <NavLink href={'#'}>
+                                    Acompanhamento Inteligente
+                                    <span className="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">Em Breve</span>
                                 </NavLink>
                             </div>
                         </div>
@@ -101,6 +105,10 @@ export default function Authenticated({ user, header, children }) {
                         <ResponsiveNavLink href={route('diet.index')} active={route().current('diet.index')}>
                             Minhas Dietas
                         </ResponsiveNavLink>
+                        <ResponsiveNavLink href={'#'}>
+                            Acompanhamento Inteligente
+                            <span className="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">Em Breve</span>
+                        </ResponsiveNavLink>
                     </div>
 
                     <div className="pt-4 pb-1 border-t border-gray-200">
@@ -132,7 +140,7 @@ export default function Authenticated({ user, header, children }) {
                     <div className="md:flex md:justify-between">
                     <div className="mb-6 md:mb-0">
                         <a href="https://www.livediet.com.br/" className="flex items-center">
-                            <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800"/>
+                            <ApplicationLogo className="block h-[100px] w-auto fill-current text-gray-800"/>
                         </a>
                     </div>
                     <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-2">
@@ -140,7 +148,7 @@ export default function Authenticated({ user, header, children }) {
                             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Siga-nos</h2>
                             <ul className="text-gray-500 dark:text-gray-400 font-medium">
                                 <li className="mb-4">
-                                    <a href="https://github.com/themesberg/flowbite" className="hover:underline ">Instagram</a>
+                                    <a href="https://www.instagram.com/livediet_ai/" target='_BLANK' className="hover:underline ">Instagram</a>
                                 </li>
                             </ul>
                         </div>
@@ -148,7 +156,7 @@ export default function Authenticated({ user, header, children }) {
                             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Jurídica</h2>
                             <ul className="text-gray-500 dark:text-gray-400 font-medium">
                                 <li className="mb-4">
-                                    <a href="#" className="hover:underline">Termos e condições</a>
+                                    <a href={'/termos-e-condicoes'} className="hover:underline">Termos e condições</a>
                                 </li>
                             </ul>
                         </div>
